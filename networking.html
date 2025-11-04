@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
-	<title>Cases</title>
+	<title>Networking - Kyro</title>
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
-	<!-- <style>body{opacity: 0;}</style> -->
 	<link rel="stylesheet" href="css/style.min666b.css?_v=20221124151909">
 	<link rel="shortcut icon" href="funnylilguy.ico">
-	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<style>
 		.loader-visual {
@@ -64,30 +61,6 @@
 			transition: clip-path .2s cubic-bezier(.645, .045, .355, 1);
 			transition: clip-path .2s cubic-bezier(.645, .045, .355, 1), -webkit-clip-path .2s cubic-bezier(.645, .045, .355, 1);
 		}
-         /* The alert message box */
-.alert {
-  padding: 20px;
-  background-color: #f44336; /* Red */
-  color: white;
-  margin-bottom: 15px;
-}
-
-/* The close button */
-.closebtn {
-  margin-left: 15px;
-  color: white;
-  font-weight: bold;
-  float: right;
-  font-size: 22px;
-  line-height: 20px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-/* When moving the mouse over the close button */
-.closebtn:hover {
-  color: black;
-} 
 	</style>
 </head>
 
@@ -95,8 +68,9 @@
 	<div id="loaderPrecent" class="loader-visual ">
 		<div class="loader-visual__logo"><img src="img/logo-opacity.svg" width="230" alt=""><img src="img/logo.svg" width="230" alt=""></div>
 	</div>
+
 	<div class="cursor"></div>
-	<div data-fullscreen class="wrapper wrapper_cases wrapper_full">
+	<div class="wrapper wrapper_an-page">
 
 		<header data-watch data-watch-once class="header">
 			<div class="header__container">
@@ -107,7 +81,6 @@
 						<div class="line left bottom width"></div>
 						<div class="line right top height"></div>
 						<div data-opacity-text class="menu__date">© 2025</div>
-						<!-- <div data-opacity-text class="menu__date"><span class="animation"><span>© 2025</span></span></div> -->
 						<a href="#" class="menu__icon icon-menu relative">
 							<div class="line left top height md3"></div>
 							<div class="icon-menu__wrapper"><span></span></div>
@@ -150,17 +123,17 @@
 									<div class="socials">
 										<ul class="socials__list">
 											<li><a data-opacity-text href="https://github.com/kyrofx" target="_blank" class="socials__link link">GitHub</a></li>
-											<li><a data-opacity-text href="mailto:kyro@kyro.dog" target="_blank" class="socials__link link">Email</a></li>
-											<li><a data-opacity-text href="https://discord.com/channels/@me" target="_blank" onclick="discwap()" class="socials__link link">Discord</a>
+									    <li><a data-opacity-text href="mailto:kyro@kyro.dog" target="_blank" class="socials__link link">Email</a></li>
+									    <li><a data-opacity-text href="https://discord.com/channels/@me" target="_blank" onclick="discwap()" class="socials__link link">Discord</a>
 
 
-												<script>
-													function discwap() {
-														alert("@kyrofx");
-													}
-												</script>
+                                         <script>
+                                            function discwap() {
+                                            alert("@kyrofx");
+                                            }
+                                            </script>
 
-											</li>
+                                        </li>
 										</ul>
 									</div>
 								</li>
@@ -170,99 +143,78 @@
 				</div>
 			</div>
 		</header>
-		<main class="page page_cases">
+		<main class="page page_about ">
 			<div class="page__container">
 
 				<div class="page__main main-block">
-					<div class="main-block__header">
+					<div data-watch data-watch-once data-watch-threshold="0.2" class="main-block__header">
 						<div class="line left bottom width"></div>
 						<a href="index.html" data-opacity-text class="main-block__is">kyro</a>
-						<h1 data-opacity-text class="main-block__title ">Projects</h1>
+						<h1 data-opacity-text class="main-block__title ">Networking</h1>
 					</div>
-					<div class="main-block__content content-block relative">
-						<div class="content-block__image-block">
-							<div class="content-block__image"></div>
-						</div>
-						<div class="content-block__wrapper relative">
-							<div class="line top left height"></div>
-							<div class="line top right height"></div>
-							<div class="line bottom left width"></div>
-							<div class="content-block__main ">
-								<ul data-hover-parent class="cases-list">
 
+					<div data-watch data-watch-once data-watch-threshold="0.2" class="main-block__content content-block ">
 
-									<li class="cases-list__item relative">
-										<div class="line left bottom width"></div>
-										<a data-hover-target href="apple.html" class="cases-list__link ">
-
-												<span class="_hover _hover_top"></span>
-												<span class=" _hover _hover_bottom"></span>
-
-											<picture><source
-                                                             srcset="" type="image/webp"><img hidden src="" alt="image"></picture>
-											<span data-opacity-text data-hover-content>Apple</span>
-										</a>
-									</li>
-									<li class="cases-list__item relative">
-										<div class="line left bottom width"></div>
-										<a data-hover-target href="homelab.html" class="cases-list__link">
-
-												<span class="_hover _hover_top"></span>
-												<span class=" _hover _hover_bottom"></span>
-
-											<picture><source
-                                                             srcset="" type="image/webp"><img hidden src="" alt="image"></picture>
-											<span data-opacity-text data-hover-content>Homelab</span>
-										</a>
-									</li>
-									<li class="cases-list__item relative">
-										<div class="line left bottom width"></div>
-										<a data-hover-target href="networking.html" class="cases-list__link ">
-
-												<span class="_hover _hover_top"></span>
-												<span class=" _hover _hover_bottom"></span>
-
-											<picture><source
-													srcset="" type="image/webp"><img hidden src="" alt="image"></picture>
-											<span data-opacity-text data-hover-content>Networking</span>
-										</a>
-									</li>
-									<li class="cases-list__item relative">
-										<div class="line left bottom width"></div>
-										<a data-hover-target href="bronco-racing.html" class="cases-list__link ">
-
-												<span class="_hover _hover_top"></span>
-												<span class=" _hover _hover_bottom"></span>
-
-											<picture><source
-													srcset="" type="image/webp"><img hidden src="" alt="image"></picture>
-											<span data-opacity-text data-hover-content>Bronco Racing</span>
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div class="content-block__info relative">
-								<div class="line left top height mmd3"></div>
-								<div class="socials">
-									<ul class="socials__list">
-										<li><a data-opacity-text href="https://github.com/kyrofx" target="_blank" class="socials__link link">GitHub</a></li>
+						<div class="content-block__body body-content-block ">
+							<div class="body-content-block__wrapper relative">
+								<div class="line right top height mmd3"></div>
+								<div class="line top left width md3"></div>
+								<div class="body-content-block__content relative">
+									<div class="line left top height "></div>
+									<div class="line right top height md3"></div>
+									<div class="line left bottom width"></div>
+									<div data-watch data-watch-once data-watch-threshold="0.2" class="body-content-block__description description-content-block ">
+										<h3 data-opacity-text>Overview</h3>
+										<p data-opacity-text>Designing, implementing, and managing network infrastructure with a focus on security, performance, and reliability. Experience with enterprise-grade networking equipment and modern network architectures.
+										</p>
+										<h3 data-opacity-text>Equipment & Technologies</h3>
+										<p data-opacity-text>
+											• Ubiquiti UniFi ecosystem (Dream Machine, switches, access points)<br>
+											• VLANs and network segmentation<br>
+											• pfSense and OPNsense firewalls<br>
+											• VPN solutions (WireGuard, OpenVPN)<br>
+											• Network monitoring and management tools
+										</p>
+										<h3 data-opacity-text>Key Areas</h3>
+										<p data-opacity-text>Network security implementation, traffic shaping and QoS, high-availability configurations, and performance optimization. Working with both physical and virtual networking to create robust, scalable network infrastructure for homelab and production environments.
+										</p>
+									</div>
+								</div>
+								<div class="body-content-block__info relative">
+									<div class="line left top height"></div>
+									<div class="line left bottom width"></div>
+									<div class="line right top height md3"></div>
+									<div class="socials">
+										<ul class="socials__list">
+											<li><a data-opacity-text href="https://github.com/kyrofx" target="_blank" class="socials__link link">GitHub</a></li>
 									    <li><a data-opacity-text href="mailto:kyro@kyro.dog" target="_blank" class="socials__link link">Email</a></li>
 									    <li><a data-opacity-text href="https://discord.com/channels/@me" target="_blank" onclick="discwap()" class="socials__link link">Discord</a>
-                                        
-                                        
+
+
                                          <script>
                                             function discwap() {
                                             alert("@kyrofx");
                                             }
                                             </script>
-                                        
+
                                         </li>
-									</ul>
+										</ul>
+									</div>
 								</div>
 							</div>
+
 						</div>
-
-
+					</div>
+						<div class="experience__socials md3">
+							<div data-watch data-watch-once data-watch-threshold="0.2" class="socials relative">
+								<div class="line left top height "></div>
+								<div class="line right top height "></div>
+								<div class="line left bottom width "></div>
+								<ul class="socials__list">
+									<li><a data-opacity-text href="projects.html" class="socials__link link">← Back to Projects</a></li>
+								</ul>
+							</div>
+						</div>
 					</div>
 				</div>
 
@@ -280,9 +232,7 @@
 		</footer>
 
 	</div>
-
 	<script src="js/app.min666b.js?_v=20221124151909"></script>
 </body>
-
 
 </html>
