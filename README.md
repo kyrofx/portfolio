@@ -28,7 +28,9 @@ Commit the generated root HTML files, `ca/*.html`, and `sitemap.xml` with their 
 
 Keep visible content to names, genuine facts, functional labels, and links. Do not add eyebrows, taglines, project blurbs, or decorative descriptions. `PROJECTS` contains verified public repositories; the first four appear on the homepage.
 
-The small enhancements are project-language filtering, copy-email feedback, brief type entrances, and hover/focus treatments. Motion respects the system's reduced-motion setting. Content, project links, navigation, and language switching work without JavaScript. Clipboard copying appears only in a secure browser context that supports it.
+Motion includes spring-driven letters that respond to pointer or touch, outline echoes of the name, a sliding navigation highlight, staggered scroll entrances, and animated project filtering. Same-origin page navigation uses native view transitions where supported. The typography stops updating once its springs settle; nothing runs continuously at rest. Reduced-motion preferences disable entrances, transitions, and spring tracking, including when the preference changes while the page is open.
+
+Content, project links, navigation, and language switching work without JavaScript. Clipboard copying appears only in a secure browser context that supports it.
 
 ## Publish
 

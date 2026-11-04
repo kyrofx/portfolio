@@ -91,7 +91,7 @@ def contacts(c, full=False):
 def content(lang, page):
     c = COPY[lang]
     if page == 'index':
-        letters = ''.join(f'<span class="letter" style="--i:{i}" aria-hidden="true">{char}</span>' for i, char in enumerate('kyro'))
+        letters = ''.join(f'<span class="letter" data-letter="{char}" style="--i:{i}" aria-hidden="true"><span class="letter-glyph">{char}</span></span>' for i, char in enumerate('kyro'))
         return f'''<div class="nameplate"><h1 class="name" aria-label="Kyro">{letters}</h1></div>
         <div class="home-content">
           <section class="home-projects" aria-labelledby="projects-title">
