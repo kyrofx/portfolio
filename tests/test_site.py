@@ -66,6 +66,24 @@ class StaticSiteTests(unittest.TestCase):
         locations = [node.text for node in tree.findall('.//{http://www.sitemaps.org/schemas/sitemap/0.9}loc')]
         self.assertEqual(set(locations), {SITE.url(lang, page) for lang in SITE.COPY for page in SITE.PAGES})
 
+    def test_no_promotional_paragraphs_or_old_emblem(self):
+        for lang in SITE.COPY:
+            for page in SITE.PAGES:
+                html = SITE.render(lang, page)
+                doc = Document(html)
+                for tag, attrs in doc.tags:
+                    if tag == 'p':
+                        self.assertEqual(attrs.get('role'), 'status')
+                self.assertNotIn('eyebrow', html)
+                self.assertNotIn('data-dial', html)
+                self.assertNotIn('Always curious', html)
+
+    def test_project_links_point_to_the_named_repositories(self):
+        html = SITE.render('en', 'projects')
+        for name, language in SITE.PROJECTS:
+            self.assertIn(f'href="https://github.com/kyrofx/{name}"', html)
+            self.assertIn(f'data-language="{language}"', html)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,70 +1,39 @@
-// Progressive enhancements only: all content and navigation work without JavaScript.
-const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-const dial = document.querySelector('[data-dial]');
-
-if (dial) {
-  const readout = document.querySelector('[data-rotation]');
-  let rotation = 0;
-  let startX = 0;
-  let startRotation = 0;
-  let pointer = null;
-  let dragged = false;
-  const turn = (value) => {
-    rotation = value;
-    dial.style.setProperty('--rotation', `${rotation}deg`);
-    readout.textContent = `${Math.round(((rotation % 360) + 360) % 360)}°`;
-  };
-  dial.disabled = false;
-  document.querySelector('[data-dial-hint]').textContent = dial.dataset.hint;
-  dial.addEventListener('pointerdown', (event) => {
-    if (!event.isPrimary || event.button !== 0) return;
-    pointer = event.pointerId;
-    startX = event.clientX;
-    startRotation = rotation;
-    dragged = false;
-    dial.setPointerCapture(pointer);
-    dial.classList.add('is-dragging');
-  });
-  dial.addEventListener('pointermove', (event) => {
-    if (event.pointerId !== pointer) return;
-    const distance = event.clientX - startX;
-    if (Math.abs(distance) > 4) dragged = true;
-    if (dragged) turn(startRotation + distance * 1.5);
-  });
-  const release = () => {
-    pointer = null;
-    dial.classList.remove('is-dragging');
-  };
-  dial.addEventListener('pointerup', release);
-  dial.addEventListener('pointercancel', () => { dragged = true; release(); });
-  dial.addEventListener('lostpointercapture', release);
-  dial.addEventListener('click', () => {
-    if (!dragged) turn(rotation + 45);
-    dragged = false;
-  });
-  dial.addEventListener('keydown', (event) => {
-    if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
-      event.preventDefault();
-      turn(rotation + (event.key === 'ArrowRight' ? 15 : -15));
-    }
+// Content, navigation, and every project link work without JavaScript.
+const filters = document.querySelector('.project-filters');
+if (filters) {
+  const buttons = [...filters.querySelectorAll('[data-filter]')];
+  const projects = [...document.querySelectorAll('.project-index .project')];
+  const status = document.querySelector('[data-filter-status]');
+  filters.hidden = false;
+  filters.addEventListener('click', (event) => {
+    const button = event.target.closest('[data-filter]');
+    if (!button) return;
+    buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+    let count = 0;
+    projects.forEach((project) => {
+      const matches = button.dataset.filter === 'all' || project.dataset.language === button.dataset.filter;
+      project.hidden = !matches;
+      if (matches) project.style.setProperty('--row', count++);
+    });
+    status.textContent = `${count} ${count === 1 ? status.dataset.singular : status.dataset.noun}`;
   });
 }
 
 const copyButton = document.querySelector('[data-copy]');
 if (copyButton && navigator.clipboard && window.isSecureContext) {
   copyButton.hidden = false;
+  let resetLabel;
+  const label = copyButton.textContent;
   copyButton.addEventListener('click', async () => {
     const status = document.querySelector('[data-copy-status]');
     try {
       await navigator.clipboard.writeText(copyButton.dataset.copy);
       status.textContent = copyButton.dataset.success;
+      copyButton.textContent = copyButton.dataset.copied;
+      clearTimeout(resetLabel);
+      resetLabel = setTimeout(() => { copyButton.textContent = label; }, 2000);
     } catch {
       status.textContent = copyButton.dataset.failure;
     }
   });
 }
-
-// Keep interaction immediate when the operating system requests less motion.
-reducedMotion.addEventListener('change', () => {
-  if (dial) dial.classList.remove('is-dragging');
-});
