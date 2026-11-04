@@ -138,6 +138,18 @@ def render(lang, page):
   <title>{title}</title>
   <meta name="description" content="{c['description']}">
   <meta name="theme-color" content="#ffffff">
+  <script>
+    // Fail open if the enhancement cannot load; the static page remains usable.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {{
+      document.documentElement.classList.add('ascii-pending', 'ascii-used');
+      window.asciiSafetyTimer = setTimeout(() => {{
+        document.documentElement.classList.remove('ascii-pending', 'ascii-active');
+        document.querySelector('.ascii-screen')?.remove();
+        window.dispatchEvent(new Event('ascii:abort'));
+        window.dispatchEvent(new Event('ascii:ready'));
+      }}, 3500);
+    }}
+  </script>
   <link rel="canonical" href="{url(lang, page)}">
   <link rel="alternate" hreflang="en" href="{url('en', page)}">
   <link rel="alternate" hreflang="ca" href="{url('ca', page)}">
@@ -150,6 +162,7 @@ def render(lang, page):
   <link rel="icon" href="{prefix}img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="{prefix}css/site.css">
   <script src="{prefix}js/site.js" defer></script>
+  <script src="{prefix}js/ascii.js" defer></script>
 </head>
 <body class="page-{page}">
   <a class="skip-link" href="#main">{c['skip']}</a>

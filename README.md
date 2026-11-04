@@ -14,12 +14,14 @@ Edit the shared layout and both languages in `scripts/build_site.py`, then run:
 python3 scripts/build_site.py
 python3 -m unittest discover -s tests
 node --check js/site.js
+node --check js/ascii.js
 ```
 
 Optional browser validation (Python Playwright and Chromium are available in this cloud environment):
 
 ```sh
 python3 tests/browser_smoke.py
+python3 tests/ascii_smoke.py
 ```
 
 It starts an isolated temporary HTTP server and checks responsive layouts, language switching, project filters, clipboard feedback, reduced motion, and navigation with JavaScript disabled.
@@ -28,7 +30,11 @@ Commit the generated root HTML files, `ca/*.html`, and `sitemap.xml` with their 
 
 Keep visible content to names, genuine facts, functional labels, and links. Do not add eyebrows, taglines, project blurbs, or decorative descriptions. `PROJECTS` contains verified public repositories; the first four appear on the homepage.
 
-Motion includes spring-driven letters that respond to pointer or touch, outline echoes of the name, a sliding navigation highlight, staggered scroll entrances, and animated project filtering. Same-origin page navigation uses native view transitions where supported. The typography stops updating once its springs settle; nothing runs continuously at rest. Reduced-motion preferences disable entrances, transitions, and spring tracking, including when the preference changes while the page is open.
+Loading reconstructs the visible page as ASCII characters: the actual text and rules are sampled into a small canvas mask, zoom out, then dissolve into the real HTML. Initial loads last about 1.85 seconds; internal navigation uses a 180 ms exit and 800 ms arrival. Navigation remains ordinary document navigation, with normal browser history and translated URLs. External links, new tabs, downloads, and same-page anchors retain normal behavior.
+
+The renderer is in `js/ascii.js`. Interaction skips an entrance immediately. Reduced motion, back/forward navigation, resizing, unavailable canvas, and failed scripts all restore the real page. An early 3.5-second watchdog prevents a blocked renderer from hiding content indefinitely. The canvas is decorative, ignores pointer events, and is removed when finished. No loading copy or simulated progress percentages are shown.
+
+Other motion includes spring-driven letters that respond to pointer or touch, outline echoes of the name, a sliding navigation highlight, scroll entrances, and animated project filtering. The typography stops updating once its springs settle; nothing runs continuously at rest. Reduced-motion preferences disable entrances, transitions, and spring tracking, including when the preference changes while the page is open.
 
 Content, project links, navigation, and language switching work without JavaScript. Clipboard copying appears only in a secure browser context that supports it.
 

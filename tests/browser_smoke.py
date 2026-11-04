@@ -57,7 +57,7 @@ def check():
             page.keyboard.press('Space')
             expect(page.locator('.project:visible')).to_have_count(7)
             page.locator('.language-switch a[lang="ca"]').click()
-            assert page.url.endswith('/ca/projects.html')
+            expect(page).to_have_url(base + 'ca/projects.html')
             page.locator('[data-filter="Go"]').click()
             expect(page.locator('.project:visible')).to_have_count(1)
             expect(page.locator('[data-filter-status]')).to_have_text('1 projecte')
@@ -73,7 +73,7 @@ def check():
             print('PASS: clipboard success and failure feedback')
 
             page.goto(base, wait_until='networkidle')
-            page.wait_for_timeout(800)
+            expect(page.locator('.ascii-screen')).to_have_count(0)
             page.screenshot(path='/tmp/kyro-revision-desktop.png', full_page=True)
             letter = page.locator('.letter').nth(1)
             letter.hover()

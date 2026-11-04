@@ -146,18 +146,30 @@ document.querySelectorAll('.project a').forEach((link) => {
   });
 });
 
-if ('IntersectionObserver' in window) {
+function observeEntrances() {
+  if (!('IntersectionObserver' in window)) return;
   const targets = document.querySelectorAll('.home-content h2, .project, .contact-links li, .facts > div, .contact-details > div, .site-footer');
+  const assembled = new WeakSet();
+  if (document.documentElement.classList.contains('ascii-used')) {
+    targets.forEach((target) => {
+      const rect = target.getBoundingClientRect();
+      if (rect.top < innerHeight && rect.bottom > 0) assembled.add(target);
+    });
+  }
   const observer = new IntersectionObserver((entries) => {
     let order = 0;
     entries.forEach(({ target, isIntersecting }) => {
       if (!isIntersecting) return;
       observer.unobserve(target);
+      if (assembled.has(target)) return;
       animate(target, [{ opacity: 0, transform: 'translateY(18px)' }, { opacity: 1, transform: 'translateY(0)' }], { delay: Math.min(order++ * 45, 180) });
     });
   }, { threshold: .12 });
   targets.forEach((target) => observer.observe(target));
 }
+if (document.documentElement.classList.contains('ascii-pending')) {
+  window.addEventListener('ascii:ready', observeEntrances, { once: true });
+} else observeEntrances();
 
 const filters = document.querySelector('.project-filters');
 if (filters) {

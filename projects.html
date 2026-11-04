@@ -6,6 +6,18 @@
   <title>projects / kyro</title>
   <meta name="description" content="Kyro. Projects, contact details, and GitHub repositories.">
   <meta name="theme-color" content="#ffffff">
+  <script>
+    // Fail open if the enhancement cannot load; the static page remains usable.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('ascii-pending', 'ascii-used');
+      window.asciiSafetyTimer = setTimeout(() => {
+        document.documentElement.classList.remove('ascii-pending', 'ascii-active');
+        document.querySelector('.ascii-screen')?.remove();
+        window.dispatchEvent(new Event('ascii:abort'));
+        window.dispatchEvent(new Event('ascii:ready'));
+      }, 3500);
+    }
+  </script>
   <link rel="canonical" href="https://kyro.cat/projects.html">
   <link rel="alternate" hreflang="en" href="https://kyro.cat/projects.html">
   <link rel="alternate" hreflang="ca" href="https://kyro.cat/ca/projects.html">
@@ -18,6 +30,7 @@
   <link rel="icon" href="img/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/site.css">
   <script src="js/site.js" defer></script>
+  <script src="js/ascii.js" defer></script>
 </head>
 <body class="page-projects">
   <a class="skip-link" href="#main">Skip to content</a>
